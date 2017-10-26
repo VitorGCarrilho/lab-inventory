@@ -27,16 +27,11 @@ public class Product {
 	@Size(max=250)
 	private String productDescription;
 	
-	@Size(max=50)
-	private String wardrobe;
-	
-	@Size(max=50)
-	private String tower;
-	
-	@Size(max=50)
-	private String drawer;
+	private String local;
 	
 	private boolean available;
+	
+	private boolean active;
 
 	public String getProductName() {
 		return productName;
@@ -70,28 +65,12 @@ public class Product {
 		this.productDescription = productDescription;
 	}
 
-	public String getWardrobe() {
-		return wardrobe;
+	public String getLocal() {
+		return local;
 	}
 
-	public void setWardrobe(String wardrobe) {
-		this.wardrobe = wardrobe;
-	}
-
-	public String getTower() {
-		return tower;
-	}
-
-	public void setTower(String tower) {
-		this.tower = tower;
-	}
-
-	public String getDrawer() {
-		return drawer;
-	}
-
-	public void setDrawer(String drawer) {
-		this.drawer = drawer;
+	public void setLocal(String local) {
+		this.local = local;
 	}
 
 	public boolean isAvailable() {
@@ -100,6 +79,14 @@ public class Product {
 
 	public void setAvailable(boolean available) {
 		this.available = available;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 	
 }

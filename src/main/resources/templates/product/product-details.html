@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/layout">
+
+<body class="bg-clouds">
+
+	<div layout:fragment="content">
+		<div class="content">
+			<h2 class="page-header col-md-12" th:text="${product.productName}"></h2>
+			<p class="h5 col-md-6"><b>Serial:</b> <span th:text="${product.serialNumber}"></span></p>
+			<p class="h5 col-md-6"><b>Disponivel:</b> <span th:text="${product.available} ? sim : não"></span></p>
+			<p class="h5 col-md-6"><b>Tipo Produto:</b> <span th:text="${product.productType}"></span></p>
+			<p class="h5 col-md-6"><b>Armario:</b> <span th:text="${product.wardrobe}"></span></p>
+			<p class="h5 col-md-6"><b>Torre:</b> <span th:text="${product.tower}"></span></p>
+			<p class="h5 col-md-6"><b>Gaveta:</b> <span th:text="${product.drawer}"></span></p>
+			<p class="h5 col-md-12"><b>Descrição:</b> <span th:text="${product.productDescription}"></span></p>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/layout">
+
+<body class="bg-clouds">
+
+	<div layout:fragment="content">
+		<div class="content">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Serial</th>
+						<th>Nome do Produto</th>
+						<th>Tipo</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="product : ${products}">
+						<td ><a th:text="${product.serialNumber}" th:href="@{/produto/{serial}(serial=${product.serialNumber})}"></a></td>
+						<td th:text="${product.productName}">Doe</td>
+						<td th:text="${product.productType}">john@example.com</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

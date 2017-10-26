@@ -1,0 +1,183 @@
+.navbar{
+	margin-bottom: 0;
+}
+.barra-navegacao{
+	padding-top: 2rem;
+	background: #f8f8f8;
+	height: calc(100vh - 52px);
+	padding-right: 0;
+	padding-left: 0;
+	transform: .3s;	
+}
+.barra-navegacao ul li a{
+	transition: .2s;
+}
+.barra-navegacao ul li a:focus,
+.barra-navegacao ul li a:hover{
+	background: #ecf0f1;
+}
+.menu-anchor{
+	display: none;
+}
+@media (max-width: 992px){
+	.barra-navegacao{
+		display: none;
+	}
+	.menu-anchor{
+		display: inline-block;
+	}
+	ul img{
+		padding-top: 3rem;
+		padding-bottom: 3rem;
+	}
+}
+.barra-navegacao ul li a,
+.nav-pills > li > a{
+	border-radius: 0;
+}
+.nav img{
+	padding-bottom: 1.75rem;
+}
+.rodape{
+	position: fixed;
+	width: 100%;
+	margin-left: 0;
+	bottom: 0;
+	background: red;
+	margin-left: -15px;
+}
+@media only screen and (max-width: 768px){
+	.container-fluid{
+		padding-bottom: 30px;
+	}
+}
+
+
+
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/* Isto é necessário para não haver rolagens horizontais quando movermos os elementos */
+html, body {
+	overflow-x: hidden;
+}
+header {
+	overflow: hidden;
+	background: #f8f8f8;
+	border-bottom: 1px solid #e0e0e0;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+}
+
+header h1 {
+	display: inline-block;
+	vertical-align: middle;
+	text-align: center;
+	width: 100%;
+	font-size: 1.5em;
+	margin: 0 auto;
+}
+h1 a {
+	text-decoration: none;
+}
+header input {
+	float: right;
+	padding: 10px;
+	width: 200px;
+	border: none;
+}
+.main p {
+	line-height: 1.2em;
+	margin-bottom: 20px;
+}
+.menu-anchor {		
+	padding: 1rem;
+	position: fixed;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	cursor: pointer;
+	background: #FFF;
+}
+.menu-anchor i{
+	font-size: 2rem;
+}
+.menu-active .menu-anchor {
+	background: #337ab7;
+	color: #fff;
+}
+.menu-mobile {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	width: 220px;
+	height: 100%;
+	padding-top: 10px;
+	background: #f8f8f8;		
+}
+
+.menu-mobile li a {
+	display: block;
+	border-bottom: 1px solid rgba(255,255,255,.3);
+	padding: 10px;
+	text-decoration: none;
+}
+.menu-mobile li a:hover {
+	background: #337ab7;
+	color: #fff;
+}
+.menu-mobile {
+	-webkit-transform: translateX(-220px);
+	-moz-transform: translateX(-220px);
+	-ms-transform: translateX(-220px);
+	transform: translateX(-220px);
+	-webkit-transition: all .25s linear;
+	-moz-transition: all .25s linear;
+	-ms-transition: all .25s linear;
+	transition: all .25s linear;
+}
+
+header, .main {
+	-webkit-transform: translateX(0);
+	-moz-transform: translateX(0);
+	-ms-transform: translateX(0);
+	transform: translateX(0);
+	-webkit-transition: all .25s linear;
+	-moz-transition: all .25s linear;
+	-ms-transition: all .25s linear;
+	transition: all .25s linear;
+}
+.menu-active .menu-mobile {
+	-webkit-transform: translateX(0);
+	-moz-transform: translateX(0);
+	-ms-transform: translateX(0);
+	transform: translateX(0);
+}
+
+.menu-active header, 
+.menu-active .main {
+	-webkit-transform: translateX(220px);
+	-moz-transform: translateX(220px);
+	-ms-transform: translateX(220px);
+	transform: translateX(220px);
+}
+
+img.board{
+	padding: 50px; 
+	max-height: 350px;
+}
+
+.content{
+	padding-top: 25px;
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-bottom: 25px;
+}
+
+.logo-menu{
+	padding-top:20px;
+}

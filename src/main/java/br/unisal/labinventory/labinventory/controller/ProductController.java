@@ -50,5 +50,10 @@ public class ProductController {
 		Product product = productService.find(serialNumber);
 		return new ModelAndView("product/product-details").addObject("product",product);
 	}
+	
+	@GetMapping("baixa")
+	public ModelAndView baixas(){
+		return new ModelAndView("product/product-exclusion");
+	}
 
 }

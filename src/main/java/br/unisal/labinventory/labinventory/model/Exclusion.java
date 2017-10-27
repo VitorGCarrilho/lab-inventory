@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -17,6 +18,7 @@ public class Exclusion {
 	
 	@NotNull
 	@NotEmpty
+	@Size(max=500)
 	@Column(nullable=false)
 	private String reason;
 	

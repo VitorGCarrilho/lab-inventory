@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -67,10 +68,14 @@ public class ProductController {
 		return new ModelAndView("product/product-exclusion").addObject("product", product);
 	}
 	
-	@PostMapping("baixa/{serialNumber}")
-	public ModelAndView doExclude(@PathVariable String serialNumber, @RequestBody @Valid Exclusion exclusion) {
+	@DeleteMapping("baixa/{serialNumber}")
+	public ModelAndView doExclude(@PathVariable String serialNumber, @Valid Exclusion exclusion, BindingResult result) {
+		if(result.hasErrors()){
+			doExclude(serialNumber);
+		}
 		Product product = productService.find(serialNumber);
-		return new ModelAndView("product/product-exclusion").addObject("product", product);
+		System.out.println("teste");
+		return new ModelAndView("redirect:/produto/baixa");
 	}
 
 }

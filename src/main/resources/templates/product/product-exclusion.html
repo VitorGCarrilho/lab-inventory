@@ -15,10 +15,37 @@
 			<p class="h5 col-md-6"><b>Disponivel:</b> <span th:text="${product.available} ? sim : não"></span></p>
 			<p class="h5 col-md-6"><b>Tipo Produto:</b> <span th:text="${product.productType}"></span></p>
 			<p class="h5 col-md-6"><b>Localização :</b> <span th:text="${product.local}"></span></p>
-			<div class="form-group h5 col-md-12">
-				<label for="comment">Motivo da Baixa:</label>
-				<textarea class="form-control" rows="5" id="comment"></textarea>
-			</div>
+			
+			<form  th:method="DELETE" th:object="${exclusion}">
+				<div class="form-group h5 col-md-12">
+					<label for="comment">Motivo da Baixa:</label>
+					<textarea class="form-control" rows="5" id="comment" name="reason"  style="resize:none"></textarea>
+				</div>
+
+				<!-- Trigger the modal with a button -->
+				<a type="button" class="btn btn-danger pull-right col-md-3"
+					data-toggle="modal" data-target="#myModal">Realizar Baixa</a>
+
+				<!-- Modal -->
+				<div class="modal fade" id="myModal" role="dialog">
+					<div class="modal-dialog modal-sm">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">AVISO</h4>
+							</div>
+							<div class="modal-body">
+								<p
+									th:text="|Você esta realizando a baixa do produto ${product.serialNumber} - ${product.productName}, deseja continuar?|">This
+									is a small modal.</p>
+							</div>
+							<div class="modal-footer">
+								<button type="submit" class="btn btn-danger">Realizar Baixa</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
 		</div>
 	</div>
 </body>

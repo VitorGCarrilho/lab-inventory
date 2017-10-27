@@ -1,7 +1,9 @@
 package br.unisal.labinventory.labinventory.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -32,6 +34,9 @@ public class Product {
 	private boolean available;
 	
 	private boolean active;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	private Exclusion exclusion;
 
 	public String getProductName() {
 		return productName;
@@ -87,6 +92,14 @@ public class Product {
 
 	public void setActive(boolean active) {
 		this.active = active;
+	}
+
+	public Exclusion getExclusion() {
+		return exclusion;
+	}
+
+	public void setExclusion(Exclusion exclusion) {
+		this.exclusion = exclusion;
 	}
 	
 }

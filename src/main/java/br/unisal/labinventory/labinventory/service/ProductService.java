@@ -30,5 +30,9 @@ public class ProductService {
 	public List<Product> findAll(){
 		return productRepository.findAll();
 	}
+	
+	public List<Product> findActives() {
+		return productRepository.findByActive(true);
+	}
 
 }

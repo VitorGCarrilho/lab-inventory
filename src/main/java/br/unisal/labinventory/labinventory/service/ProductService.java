@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.unisal.labinventory.labinventory.exception.SerialAlreadyExistException;
+import br.unisal.labinventory.labinventory.model.Exclusion;
 import br.unisal.labinventory.labinventory.model.Product;
 import br.unisal.labinventory.labinventory.repository.ProductRepository;
 
@@ -20,6 +21,7 @@ public class ProductService {
 			throw new SerialAlreadyExistException(product.getSerialNumber()+" already exists");
 		}
 		product.setAvailable(true);
+		product.setActive(true);
 		productRepository.save(product);
 	}
 
@@ -33,6 +35,14 @@ public class ProductService {
 	
 	public List<Product> findActives() {
 		return productRepository.findByActive(true);
+	}
+
+	public void exclude(String serialNumber, Exclusion exclusion) {
+		Product product = this.find(serialNumber);
+		product.setExclusion(exclusion);
+		product.setActive(false);
+		product.setAvailable(false);
+		productRepository.save(product);
 	}
 
 }

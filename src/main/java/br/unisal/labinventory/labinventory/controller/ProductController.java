@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -63,18 +62,18 @@ public class ProductController {
 	}
 	
 	@GetMapping("baixa/{serialNumber}")
-	public ModelAndView doExclude(@PathVariable String serialNumber) {
+	public ModelAndView doExclude(@PathVariable String serialNumber, Exclusion exclusion) {
 		Product product = productService.find(serialNumber);
-		return new ModelAndView("product/product-exclusion").addObject("product", product);
+		return new ModelAndView("product/product-exclusion").addObject("product", product).addObject("exclusion",exclusion);
 	}
 	
 	@DeleteMapping("baixa/{serialNumber}")
 	public ModelAndView doExclude(@PathVariable String serialNumber, @Valid Exclusion exclusion, BindingResult result) {
 		if(result.hasErrors()){
-			doExclude(serialNumber);
+			return doExclude(serialNumber, exclusion);
 		}
-		Product product = productService.find(serialNumber);
-		System.out.println("teste");
+		productService.exclude(serialNumber, exclusion);
+		
 		return new ModelAndView("redirect:/produto/baixa");
 	}
 

@@ -10,46 +10,55 @@
 	<div layout:fragment="content">
 		<div class="content">
 			<h1 class="page-header">Inventario</h1>
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th>Serial</th>
-						<th>Nome do Produto</th>
-						<th>Tipo</th>
-						<th>Disponivel</th>
-						<th>Ativo</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="product : ${products}">
-						<td ><a th:text="${product.serialNumber}" th:href="@{/produto/{serial}(serial=${product.serialNumber})}"></a></td>
-						<td th:text="${product.productName}">Doe</td>
-						<td th:text="${product.productType}">john@example.com</td>
-						<td><span class="glyphicon" th:classappend="${product.available} ? glyphicon-ok : glyphicon-remove"></span></td>
-						<td><span class="glyphicon" th:classappend="${product.active} ? glyphicon-ok : glyphicon-remove"></span></td>
-					</tr>
-				</tbody>
-			</table>
-			<div class="row">
-				<nav aria-label="Page navigation example">
-					<center>
-						<ul class="pagination">
-							<li class="page-item"><a class="page-link" href="#"
-								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-									<span class="sr-only">Previous</span>
-							</a></li>
-							<li class="page-item"><a class="page-link" href="#">1</a></li>
-							<li class="page-item"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item"><a class="page-link" href="#"
-								aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
-									class="sr-only">Next</span>
-							</a></li>
-						</ul>
-					</center>
-				</nav>
+			<div th:if="${products.size() > 0}">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Serial</th>
+							<th>Nome do Produto</th>
+							<th>Tipo</th>
+							<th>Disponivel</th>
+							<th>Ativo</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="product : ${products}">
+							<td><a th:text="${product.serialNumber}"
+								th:href="@{/produto/{serial}(serial=${product.serialNumber})}"></a></td>
+							<td th:text="${product.productName}">Doe</td>
+							<td th:text="${product.productType}">john@example.com</td>
+							<td><span class="glyphicon"
+								th:classappend="${product.available} ? glyphicon-ok : glyphicon-remove"></span></td>
+							<td><span class="glyphicon"
+								th:classappend="${product.active} ? glyphicon-ok : glyphicon-remove"></span></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="row">
+					<nav aria-label="Page navigation example">
+						<center>
+							<ul class="pagination">
+								<li class="page-item"><a class="page-link" href="#"
+									aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+										<span class="sr-only">Previous</span>
+								</a></li>
+								<li class="page-item"><a class="page-link" href="#">1</a></li>
+								<li class="page-item"><a class="page-link" href="#">2</a></li>
+								<li class="page-item"><a class="page-link" href="#">3</a></li>
+								<li class="page-item"><a class="page-link" href="#"
+									aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+										<span class="sr-only">Next</span>
+								</a></li>
+							</ul>
+						</center>
+					</nav>
+				</div>
+				<a type="submit" class="btn btn-primary pull-right col-md-3">Gerar
+					Relatorio</a>
 			</div>
-			<a type="submit" class="btn btn-primary pull-right col-md-3">Gerar Relatorio</a>
+			<div th:if="!${products.size() > 0}">
+				<div class="alert alert-info">Nenhum produto cadastrado</div>
+			</div>
 		</div>
 	</div>
 </body>

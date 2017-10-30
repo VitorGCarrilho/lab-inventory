@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/layout">
+
+<body class="bg-clouds">
+
+	<div layout:fragment="content">
+		<div class="content">
+			<h1 class="page-header">Cadastrar Usuario</h1>
+			<form method="POST" th:action="@{/usuario}" th:object="${user}">
+				<div class="alert  alert-danger  alert-dismissible" role="alert"
+						th:if="${#fields.hasAnyErrors()}">
+						<button type="button" class="close" data-dismiss="alert"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<th:block th:each="erro : ${#fields.detailedErrors()}">
+							<div>
+								<i class="fa  fa-exclamation-circle"></i> <span
+									th:text="${erro}"> Já existe um produto com o
+									nome informado.</span>
+							</div>
+						</th:block>
+					</div>
+				<div class="form-group col-md-6">
+					<label for="name">Nome</label> 
+					<input type="text" class="form-control" id="name" name="name" th:value="${user.name}"/>
+				</div>
+				<div class="form-group col-md-6">
+					<label for="userType">Tipo Usuario</label> 
+					<select class="form-control" id="userType" name="userType">
+						<option th:each="userType : ${userTypes}" th:text="${userType.value}" th:value="${userType}"/>
+					</select>
+				</div>
+				<div class="form-group col-md-6">
+					<label for="ra">RA</label> 
+					<input type="number" class="form-control" id="ra" name="ra" th:value="${user.ra}"/>
+				</div>
+				<div class="form-group col-md-6">
+					<label for="cpf">CPF</label> 
+					<input type="number" class="form-control" id="cpf" name="cpf" th:value="${user.cpf}"/>
+				</div>
+				<button type="submit" class="btn btn-primary pull-right col-md-3">Register</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

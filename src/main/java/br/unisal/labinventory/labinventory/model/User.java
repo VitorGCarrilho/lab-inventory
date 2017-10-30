@@ -2,6 +2,7 @@ package br.unisal.labinventory.labinventory.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
@@ -11,9 +12,9 @@ import br.unisal.labinventory.labinventory.model.enumeration.UserType;
 
 @Entity
 public class User {
-	@Id 
-	@Column(unique=true)
-	private long cpf;
+	@Id
+	@GeneratedValue
+	private Long id;
 	
 	@NotNull
 	@NotEmpty
@@ -23,6 +24,27 @@ public class User {
 	
 	@Column(unique=true)
 	private long ra;
+	
+	@Column(unique=true)
+	private long cpf;
+ 
+	
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setRa(Long ra) {
+		this.ra = ra;
+	}
+
+	public void setCpf(Long cpf) {
+		this.cpf = cpf;
+	}
 
 	public String getName() {
 		return name;

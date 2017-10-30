@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,13 +22,16 @@ public class UserController {
 	private UserService userService;
 	
 	@GetMapping
-	public ModelAndView userForm(){
-		ModelAndView mv = new ModelAndView("user/register-user-form").addObject("userTypes", UserType.values());
+	public ModelAndView userForm(User user){
+		ModelAndView mv = new ModelAndView("user/register-user-form").addObject("userTypes", UserType.values()).addObject("user",user);
 		return mv;
 	}
 	
 	@PostMapping
-	public ModelAndView saveUser(User user){
+	public ModelAndView saveUser(@Valid User user, BindingResult result){
+		if(result.hasErrors()){
+			return userForm(user);
+		}
 		userService.save(user);
 		return new ModelAndView("redirect:/");
 	}

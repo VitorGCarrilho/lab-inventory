@@ -130,7 +130,10 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li>
+                        	<form method="POST" th:action="@{/logout}">
+                        		<a href="javascript:;" onclick="parentNode.submit();"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        	</form>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->

@@ -20,13 +20,18 @@ public class User {
 	@NotEmpty
 	private String name;
 	
+	@NotNull
+	@NotEmpty
+	@Column(unique=true)
+	private String email;
+	
 	private UserType userType;
 	
 	@Column(unique=true)
-	private long ra;
+	private String ra; 
 	
 	@Column(unique=true)
-	private long cpf;
+	private String cpf;
  
 	
 	
@@ -36,14 +41,6 @@ public class User {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public void setRa(Long ra) {
-		this.ra = ra;
-	}
-
-	public void setCpf(Long cpf) {
-		this.cpf = cpf;
 	}
 
 	public String getName() {
@@ -62,19 +59,30 @@ public class User {
 		this.userType = userType;
 	}
 
-	public long getRa() {
+	public String getRa() {
 		return ra;
 	}
 
-	public void setRa(long ra) {
+	public void setRa(String ra) {
+		if (ra.isEmpty()) ra = null;
 		this.ra = ra;
 	}
 
-	public long getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(long cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	
 }

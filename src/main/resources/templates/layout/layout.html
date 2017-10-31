@@ -166,7 +166,7 @@
                         <li>
                             <a th:href="@{/}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
-                        <li>
+                        <li sec:authorize="hasAuthority('ADMIN')">
                             <a href="#"><i class="fa fa-gear fa-fw"></i> Produtos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
